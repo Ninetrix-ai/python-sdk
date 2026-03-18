@@ -35,26 +35,69 @@ Then build and run as usual::
     ninetrix run
 """
 
-from ninetrix.tool import Tool
-from ninetrix.registry import ToolDef, ToolRegistry, _registry
+from ninetrix.tool import Tool as Tool
+from ninetrix.registry import ToolDef as ToolDef, ToolRegistry as ToolRegistry, _registry
 from ninetrix.discover import (
-    discover_tools_in_file,
-    discover_tools_in_files,
-    load_local_tools,
+    discover_tools_in_file as discover_tools_in_file,
+    discover_tools_in_files as discover_tools_in_files,
+    load_local_tools as load_local_tools,
+)
+from ninetrix._internals.types import (
+    # Result / event types
+    AgentResult as AgentResult,
+    StreamEvent as StreamEvent,
+    WorkflowResult as WorkflowResult,
+    StepResult as StepResult,
+    # Attachment helpers
+    ImageAttachment as ImageAttachment,
+    DocumentAttachment as DocumentAttachment,
+    Attachment as Attachment,
+    image as image,
+    document as document,
+    # Protocols
+    AgentProtocol as AgentProtocol,
+    # Errors
+    NinetrixError as NinetrixError,
+    CredentialError as CredentialError,
+    ProviderError as ProviderError,
+    ToolError as ToolError,
+    BudgetExceededError as BudgetExceededError,
+    OutputParseError as OutputParseError,
+    CheckpointError as CheckpointError,
+    ApprovalTimeoutError as ApprovalTimeoutError,
+    ConfigurationError as ConfigurationError,
+    NetworkError as NetworkError,
 )
 
 __version__ = "0.1.0"
 __all__ = [
-    # Primary public API
+    # Phase 1 — @Tool decorator
     "Tool",
-    # Registry types (useful for type hints and testing)
     "ToolDef",
     "ToolRegistry",
-    # Build-time discovery
     "discover_tools_in_file",
     "discover_tools_in_files",
-    # Runtime loader (called by generated entrypoint)
     "load_local_tools",
-    # Internal registry (advanced / testing)
     "_registry",
+    # PR 1 — types
+    "AgentResult",
+    "StreamEvent",
+    "WorkflowResult",
+    "StepResult",
+    "ImageAttachment",
+    "DocumentAttachment",
+    "Attachment",
+    "image",
+    "document",
+    "AgentProtocol",
+    "NinetrixError",
+    "CredentialError",
+    "ProviderError",
+    "ToolError",
+    "BudgetExceededError",
+    "OutputParseError",
+    "CheckpointError",
+    "ApprovalTimeoutError",
+    "ConfigurationError",
+    "NetworkError",
 ]
